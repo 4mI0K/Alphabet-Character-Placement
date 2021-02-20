@@ -55,8 +55,8 @@ while running:
     if len(entered) > 0:
         ent = entered.lower()
         if ent in characters:
-            num = slova.index(ent)
-            number = str(br + 1)
+            num = characters.index(ent)
+            number = str(num + 1)
             surface2 = my_font.render(number, True, white)
             screen.blit(surface2, (250, 110))
         elif entered.isdigit and len(entered) < 3:
