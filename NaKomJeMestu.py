@@ -28,12 +28,12 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
-            if rektic.collidepoint(event.pos):
+            if recty.collidepoint(event.pos):
                 active = True
             else:
                 active = False
         if event.type == pygame.KEYDOWN:
-            if aktivno == True:
+            if active == True:
                 if event.key == pygame.K_BACKSPACE:
                     text = text[0:-1]
                 elif event.key == pygame.K_ESCAPE:
