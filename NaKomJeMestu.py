@@ -19,7 +19,7 @@ color_passive = pygame.Color('gray19')
 color = color_passive
 active = False
 pygame.display.set_caption('Abcd')
-a = pygame.image.load('a.jpg') # you can use a full path to the file of a.jpg
+a = pygame.image.load('a.jpg') # you need to use a full path to the file of a.jpg
 pygame.display.set_icon(a)
 
 
