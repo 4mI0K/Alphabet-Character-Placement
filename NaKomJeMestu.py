@@ -1,25 +1,25 @@
 import pygame, sys
 
 pygame.init()
-slova = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
+characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
          'w', 'x', 'y', 'z']
 white = [255, 255, 255]
 black = [0, 0, 0]
 screen = pygame.display.set_mode((500, 300))
 running = True
-moj_font = pygame.font.Font(None, 33)
-tekstic = ''
+my_font = pygame.font.Font(None, 33)
+text = ''
 entered = ''
-broj = ''
-slovo = ''
-brj = 0
-rektic = pygame.Rect(180, 200, 140, 33)
-bojanka_aktivna = pygame.Color('lightskyblue3')
-bojanka_pasivna = pygame.Color('gray19')
-bojanka = bojanka_pasivna
-aktivno = False
+number = ''
+letter = ''
+num = 0
+recty = pygame.Rect(180, 200, 140, 33)
+color_active = pygame.Color('lightskyblue3')
+color_passive = pygame.Color('gray19')
+color = color_passive
+active = False
 pygame.display.set_caption('Abcd')
-a = pygame.image.load('C:/Users/ogica/Codes/NaKomJeMestu/a.jpg')
+a = pygame.image.load('a.jpg') # you can use a full path to the file of a.jpg
 pygame.display.set_icon(a)
 
 
@@ -29,50 +29,50 @@ while running:
             running = False
         if event.type == pygame.MOUSEBUTTONDOWN:
             if rektic.collidepoint(event.pos):
-                aktivno = True
+                active = True
             else:
-                aktivno = False
+                active = False
         if event.type == pygame.KEYDOWN:
             if aktivno == True:
                 if event.key == pygame.K_BACKSPACE:
-                    tekstic = tekstic[0:-1]
+                    text = text[0:-1]
                 elif event.key == pygame.K_ESCAPE:
                     sys.exit()
                 elif event.key == pygame.K_RETURN:
-                    entered = tekstic
+                    entered = text
                 else:
-                    tekstic += event.unicode
+                    text += event.unicode
             elif event.key == pygame.K_ESCAPE:
                 sys.exit()
 
     screen.fill(black)
 
-    if aktivno:
-        bojanka = bojanka_aktivna
+    if active:
+        color = color_active
     else:
-        bojanka = bojanka_pasivna
+        color = color_passive
 
     if len(entered) > 0:
         ent = entered.lower()
-        if ent in slova:
-            br = slova.index(ent)
-            broj = str(br + 1)
-            surfejs2 = moj_font.render(broj, True, white)
-            screen.blit(surfejs2, (250, 110))
+        if ent in characters:
+            num = slova.index(ent)
+            number = str(br + 1)
+            surface2 = my_font.render(number, True, white)
+            screen.blit(surface2, (250, 110))
         elif entered.isdigit and len(entered) < 3:
             try:
-                brj = int(entered)
-                if brj <= len(slova) + 1:
-                    if slova[int(brj) - 1] in slova:
-                        slovce = slova[int(brj) - 1]
-                        surfejs3 = moj_font.render(slovce, True, white)
-                        screen.blit(surfejs3, (250, 110))
+                num = int(entered)
+                if num <= len(characters) + 1:
+                    if characters[int(num) - 1] in characters:
+                        letter = characters[int(num) - 1]
+                        surface3 = my_font.render(letter, True, white)
+                        screen.blit(surface3, (250, 110))
             except:
                 pass
 
-    pygame.draw.rect(screen, bojanka, rektic, 2)
-    surfejs = moj_font.render(tekstic, True, white)
-    screen.blit(surfejs, (rektic.x + 5, rektic.y + 5))
-    rektic.w = max(130, surfejs.get_width() + 10)
+    pygame.draw.rect(screen, color, recty, 2)
+    surface = my_font.render(text, True, white)
+    screen.blit(surface, (recty.x + 5, recty.y + 5))
+    recty.w = max(130, surface.get_width() + 10)
 
     pygame.display.update()
