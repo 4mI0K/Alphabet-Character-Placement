@@ -3,10 +3,15 @@ import pygame, sys
 pygame.init()
 characters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v',
          'w', 'x', 'y', 'z']
+
 white = [255, 255, 255]
 black = [0, 0, 0]
 screen = pygame.display.set_mode((500, 300))
 running = True
+pygame.display.set_caption('Abcd')
+a = pygame.image.load('a.jpg') # you need to use a full path to the file of a.jpg
+pygame.display.set_icon(a)
+
 my_font = pygame.font.Font(None, 33)
 text = ''
 entered = ''
@@ -18,10 +23,6 @@ color_active = pygame.Color('lightskyblue3')
 color_passive = pygame.Color('gray19')
 color = color_passive
 active = False
-pygame.display.set_caption('Abcd')
-a = pygame.image.load('a.jpg') # you need to use a full path to the file of a.jpg
-pygame.display.set_icon(a)
-
 
 while running:
     for event in pygame.event.get():
